@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Homelab Management</title>
+    
+<style>
+/* Additional dashboard specific styles */
+.sidebar { 
+    background: #3498db; color:white; padding:20px; border-radius:10px 0 0 10px; display:flex;flex-direction:column;height:calc(100vh - 40px); } 
+
+.main-content { flex-grow:1; overflow-y:auto;background:#ecf0f1;padding:30px;margin-left:280px;border-radius:10px;}
+.widget-grid {display:flex;gap:20px;width:calc(100% - 450px);flex-wrap:wrap;} 
+.card-button {background:white;color:#e74c3c;padding:10px;margin-bottom:20px;text-align:center;border-radius:8px;cursor:pointer;display:block;}
+#dashboard-header{display:flex;height:calc(100vh - 45px);align-items:center;background:#ddd;} 
+</style>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body style="display:flex;margin-top:-20px;">
+
+    <!-- Sidebar Navigation (Example) -->
+    <div class="sidebar">
+        <h3>DASHBOARD MENU</h3>
+        
+        <!-- Example navigation buttons linking to iFrames/modals -->
+        <a href="/api/widget?name=system" class="card-button iframe-button widget-btn">System Status 🖥️</a><br>
+
+        <a href="/plex/" class="card-button iframe-button widget-btn">📺 Plex Media Server</a><br> 
+        <a href="/radarr/" class="card-button iframe-button widget-btn">⚙️ Radarr (Media)</a><br>
+        <a href="/jellyfin/" class="card-button iframe-button widget-btn">🎬 Jellyfin Player</a><br>
+
+        <!-- Additional widgets... -->
+    </div>
+
+
+    <!-- Main Content Area: Contains Widget Grids -->
+    <main class="main-content" id="widget-grid">
+        
+        <!-- Example content areas for each widget type (would typically be dynamically injected) --> 
+        <h1>Welcome to your Homelab Dashboard</h1>
+        
+        <p>Select a service from the left menu. Pages will open in floating modals.</p>
+
+    </main>
+
+
+    <!-- Hidden Modal Template: This structure is used for each widget's modal -->
+    
+<template id="modal-template">
+    <!-- 
+      Example hidden HTML that gets populated into document.body when clicked on a button/iframe above.
+      
+      The 'content' div here should be replaced with the appropriate iframe/modal content for each service type (like Plex, Jellyfin etc.)
+    -->
+
+    <div id="dynamic-modal" class="modal">
+        <!-- Close Button Template  -->
+        <button class="close-btn">&times;</button> 
+        
+<!-- Content loaded via iFrame or direct HTML injection-->
+        <iframe src="/content-placeholder.html"></iframe> 
+</template>
+
+
+<script src="/js/main.js"></script>
+
+    </body></html>
